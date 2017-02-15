@@ -1,0 +1,41 @@
+.skye-mp3-bg {
+    width: 60%;
+    height: 800px;
+    margin: 0 auto;
+    background-color: #FD4848;
+    position: relative;
+}
+
+.skye-mp3-player {
+    width: 300px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    background-color: #262626;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.skye-mp3-img {
+    width: 300px;
+    height: 300px;
+
+}
+
+.mp3-list {
+    display: inline-block;
+    width: 300px;
+    height: 30px;
+    background-color: #262626;
+    border: 0px;
+}
+
+#id-button-pre {
+    display: none;
+}
+#id-button-next {
+    display: none;
+}

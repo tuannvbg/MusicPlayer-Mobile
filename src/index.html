@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Music Player</title>
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+
+      <div class="skye-mp3-bg">
+          <div class="skye-mp3-player">
+
+              <img class="skye-mp3-img" src="../imgs/0.jpg">
+
+              <audio id='id-audio-player' src="../mp3/1.mp3" oncanplay="skye()" controls="controller">
+              </audio>
+
+              <div class="skye-mp3-progress">
+                  <div id='id-div-currentSong'>当前无播放歌曲</div>
+                  <span id='id-span-currentTime'></span>
+                  <input id='id-input-progress' type="range" min="0" max="1" value="0" step="0.01"/>
+                  <span id='id-span-duration'></span>
+              </div>
+
+              <div class="skye-mp3-control">
+                  <button id='id-button-pre' class="button-audio-control">上一曲</button>
+                  <button id='id-button-play' class="button-audio-control">播放/暂停</button>
+                  <button id='id-button-next' class="button-audio-control">下一曲</button>
+              </div>
+
+              <div class="skye-mp3-list">
+                  <div class="mp3-list" data-path=1>费玉清 - 小幸运</div>
+                  <div class="mp3-list" data-path=2>陈奕迅 - 阴天快乐</div>
+                  <div class="mp3-list" data-path=3>好妹妹乐队 - 不说再见</div>
+              </div>
+          </div>
+      </div>
+
+        <script src='js/skye.js'></script>
+        <script src='js/index.js'></script>
+    </body>
+</html>
