@@ -1,22 +1,28 @@
 .skye-mp3-bg {
-    width: 60%;
-    height: 800px;
+    width: 600px;
+    height: 550px;
     margin: 0 auto;
-    background-color: #FD4848;
+    border-radius: 20px;
     position: relative;
+    background-color: #FD4848;
 }
 
 .skye-mp3-player {
     width: 300px;
     height: auto;
     margin: 0 auto;
-    text-align: center;
     color: white;
+    box-shadow: 5px 5px 29px #333333;
     background-color: #262626;
+    box-shadow: 2px black;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.skye-mp3-imgPro {
+    position: relative;
 }
 
 .skye-mp3-img {
@@ -25,17 +31,61 @@
 
 }
 
+.skye-mp3-progress {
+    z-index: 100;
+    height: 50px;
+    width: 280px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding-left: 20px;
+    position: absolute;
+    top: 250px;
+}
+
 .mp3-list {
-    display: inline-block;
-    width: 300px;
-    height: 30px;
+    display: block;
+    width: 280px;
+    height: 50px;
     background-color: #262626;
     border: 0px;
+    padding-left: 20px;
+}
+
+.mp3-list-img {
+    display: inline-block;
+    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.mp3-list-name {
+    font-size: 12px;
 }
 
 #id-button-pre {
     display: none;
 }
+
+#id-button-play {
+    width: 50px;
+    height: 50px;
+    z-index: 101;
+    color: white;
+    font-size: 25px;
+    background-color: #FD4848;
+    position: absolute;
+    right: 20px;
+    top: 275px;
+    border: 0px;
+    border-radius: 50%;
+}
+
 #id-button-next {
     display: none;
+}
+
+#mp3-list-title {
+    width: 280px;
+    height: 40px;
+    margin-top: 25px;
+    padding-left: 20px;
 }
