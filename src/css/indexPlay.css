@@ -1,0 +1,100 @@
+.hide {
+    display: none;
+}
+
+.skye-mp3-bg {
+    width: 60%;
+    height: 800px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: #FD4848;
+    position: relative;
+}
+
+.skye-mp3-player {
+    width: 300px;
+    height: 520px;
+    margin: 0 auto;
+    color: white;
+    box-shadow: 5px 5px 29px #333333;
+    background-color: #262626;
+    box-shadow: 2px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.skye-mp3-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.skye-mp3-progress {
+    z-index: 100;
+
+}
+
+.time {
+    font-size: 10px;
+    color: #C4C4C4;
+}
+
+#id-div-currentSong {
+    color: #C4C4C4;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#id-span-currentTime {
+    position: absolute;
+    left: 80px;
+    top: 350px;
+}
+
+#id-input-progress {
+
+}
+
+#id-span-duration {
+    position: absolute;
+    right: 80px;
+    top: 350px;
+}
+
+#id-button-pre {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 450px;
+    left: 90px;
+}
+
+#id-button-play {
+    width: 50px;
+    height: 50px;
+    z-index: 101;
+    font-size: 25px;
+    background-color: white;
+    border: 0px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 215px;
+    transform: translateX(-50%);
+}
+
+#id-button-next {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 450px;
+    right: 90px;
+}

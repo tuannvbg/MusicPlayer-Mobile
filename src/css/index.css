@@ -1,6 +1,6 @@
 .skye-mp3-bg {
-    width: 600px;
-    height: 550px;
+    width: 60%;
+    height: 800px;
     margin: 0 auto;
     border-radius: 20px;
     position: relative;
@@ -61,6 +61,11 @@
     font-size: 12px;
 }
 
+.time {
+    font-size: 10px;
+    color: #C4C4C4;
+}
+
 #id-button-pre {
     display: none;
 }
@@ -88,4 +93,8 @@
     height: 40px;
     margin-top: 25px;
     padding-left: 20px;
+}
+
+#id-div-currentSong {
+    color: #C4C4C4;
 }
