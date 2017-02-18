@@ -9,7 +9,7 @@ var bindControl = function() {
         if(player.paused) {
             player.play()
             log('playing')
-            updateTime()
+            // updateTime()
         } else {
             player.pause()
             log('paused')
@@ -128,7 +128,7 @@ var playLoop = function() {
 
 
 
-var skye = function() {
+var __skye = function() {
     bindControl()
     showTime()
     playList()

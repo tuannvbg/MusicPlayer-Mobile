@@ -17,3 +17,11 @@ var bindEventAll = function(selector, eventName, callback) {
         elements[i].addEventListener(eventName, callback)
     }
 }
+
+var toggleClass = function(element, className) {
+    if (element.classList.contains(className)) {
+        element.classList.remove(className)
+    } else {
+        element.classList.add(className)
+    }
+}

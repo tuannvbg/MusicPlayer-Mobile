@@ -3,18 +3,26 @@
     <head>
         <meta charset="utf-8">
         <title>Music Player</title>
-        <link rel="stylesheet" href="css/indexPlay.css">
+        <link id='id-link-css' rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/animate.css">
     </head>
     <body>
 
       <div class="skye-mp3-bg">
           <div class="skye-mp3-player">
 
-              <audio id='id-audio-player' src="../mp3/1.mp3" oncanplay="skye()">
+              <audio id='id-audio-player' src="../mp3/1.mp3" oncanplay="__skye()">
               </audio>
 
               <div class="skye-mp3-imgPro">
                   <img class="skye-mp3-img" src="../imgs/1.jpg">
+                  <div class="circle circle1"></div>
+                  <div class="circle circle2"></div>
+                  <div class="circle circle3"></div>
+                  <div class="circle circle4"></div>
+                  <div class="circle circle5"></div>
+                  <div class="circle circle6"></div>
+                  <div class="circle circle7"></div>
                   <div class="skye-mp3-progress">
                       <div id='id-div-currentSong'>当前无播放歌曲</div>
                       <span id='id-span-currentTime' class="time"></span>
@@ -30,16 +38,16 @@
               </div>
 
               <div class="skye-mp3-list hide">
-                  <div id="mp3-list-title">播放列表</div>
-                  <div class="mp3-list" data-path=1>
+                  <div id="mp3-list-title" class="animated">播放列表</div>
+                  <div class="mp3-list animated" data-path=1>
                       <img class="mp3-list-img" src="../imgs/1.jpg">
                       <span class="mp3-list-name">费玉清 - 小幸运</span>
                   </div>
-                  <div class="mp3-list" data-path=2>
+                  <div class="mp3-list animated" data-path=2>
                       <img class="mp3-list-img" src="../imgs/2.jpg">
                       <span class="mp3-list-name">陈奕迅 - 阴天快乐</span>
                   </div>
-                  <div class="mp3-list" data-path=3>
+                  <div class="mp3-list animated" data-path=3>
                       <img class="mp3-list-img" src="../imgs/3.jpg">
                       <span class="mp3-list-name">好妹妹乐队 - 不说再见</span>
                   </div>
@@ -47,7 +55,8 @@
           </div>
       </div>
 
-        <script src='js/skye.js'></script>
-        <script src='js/index.js'></script>
+      <script src='js/skye.js'></script>
+      <!-- <script src='js/index.js'></script> -->
+      <script src='js/index1.js'></script>
     </body>
 </html>
