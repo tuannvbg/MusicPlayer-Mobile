@@ -7,6 +7,10 @@ var getElement = function(selector) {
     return document.querySelector(selector)
 }
 
+var getElements = function(selector) {
+    return document.querySelectorAll(selector)
+}
+
 var bindEvent = function(element, eventName, callback) {
     element.addEventListener(eventName, callback)
 }

@@ -29,17 +29,94 @@ var playSwitch = function() {
             // 切换暂停图标
             changeIcon(true, playButton)
             // 切换至播放页面
-            changePage(true)
-            // 添加动画
+            // changePage(true)
+
+            // 添加过渡动画
+            var playList = getElement('.skye-mp3-list')
+            // toggleClass(playList, 'bounceInUp')
+            // toggleClass(playList, 'bounceOutDown')
+            toggleClass(playList, 'skye-mp3-list_play')
+
+            var img = getElement('.skye-mp3-img')
+            var circles = getElements('.circle')
+            toggleClass(img, 'skye-mp3-img_play')
+            setTimeout(function(){
+                toggleClass(img, 'img-rotate_play')
+                for (var i = 0; i < circles.length; i++) {
+                    toggleClass(circles[i], 'circle_play')
+                }
+            }, 1000)
+
+            var progressContainer = getElement('.skye-mp3-progress')
+            toggleClass(progressContainer, 'skye-mp3-progress_play')
+
+            var currentSongName = getElement('#id-div-currentSong')
+            toggleClass(currentSongName, 'div-currentSong_play')
+
+            var currentTime = getElement('#id-span-currentTime')
+            var totalTime = getElement('#id-span-duration')
+            toggleClass(currentTime, 'span-currentTime_play')
+            toggleClass(totalTime, 'span-duration_play')
+
+            var progressbar = getElement('#progressbar')
+            var bar = getElement('.bar')
+            toggleClass(progressbar, 'progressbar_play')
+            toggleClass(bar, 'bar_play')
+
+            toggleClass(playButton, 'button-play_play')
+            var preButton = getElement('#id-button-pre')
+            var nextButton = getElement('#id-button-next')
+            toggleClass(preButton, 'button-pre_play')
+            toggleClass(nextButton, 'button-next_play')
+
+
+
             addAnimate()
         } else {
             musicPlayer.pause()
             log('paused')
             // 切换播放图标
             changeIcon(false, playButton)
-            // 切换至列表页面
-            changePage(false)
-            // 添加动画
+
+            // 添加过渡动画
+            var playList = getElement('.skye-mp3-list')
+            // toggleClass(playList, 'bounceOutDown')
+            // toggleClass(playList, 'bounceInUp')
+            toggleClass(playList, 'skye-mp3-list_play')
+
+            var img = getElement('.skye-mp3-img')
+            toggleClass(img, 'skye-mp3-img_play')
+            toggleClass(img, 'img-rotate_play')
+
+            var circles = getElements('.circle')
+            for (var i = 0; i < circles.length; i++) {
+                toggleClass(circles[i], 'circle_play')
+            }
+
+            var progressContainer = getElement('.skye-mp3-progress')
+            toggleClass(progressContainer, 'skye-mp3-progress_play')
+
+            var currentSongName = getElement('#id-div-currentSong')
+            toggleClass(currentSongName, 'div-currentSong_play')
+
+            var currentTime = getElement('#id-span-currentTime')
+            var totalTime = getElement('#id-span-duration')
+            toggleClass(currentTime, 'span-currentTime_play')
+            toggleClass(totalTime, 'span-duration_play')
+
+            var progressbar = getElement('#progressbar')
+            var bar = getElement('.bar')
+            toggleClass(progressbar, 'progressbar_play')
+            toggleClass(bar, 'bar_play')
+
+            toggleClass(playButton, 'button-play_play')
+            var preButton = getElement('#id-button-pre')
+            var nextButton = getElement('#id-button-next')
+            toggleClass(preButton, 'button-pre_play')
+            toggleClass(nextButton, 'button-next_play')
+
+
+
             addAnimate()
         }
 
@@ -59,22 +136,12 @@ var changeIcon = function(state, button) {
     }
 }
 
-// 切换页面函数
-var changePage = function(state) {
-    // 获取 link 标签
-    var link = getElement('#id-link-css')
-    //
-    if(state) {
-        link.href = 'css/indexPlay.css'
-    } else {
-        link.href = 'css/index.css'
-    }
-}
-
 // 添加动画
 var addAnimate = function() {
-    
+
 }
+
+
 
 
 
