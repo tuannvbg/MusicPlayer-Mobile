@@ -22,7 +22,7 @@ to{-o-transform:rotate(360deg)}
 
 /*背景**********************************************************/
 .skye-mp3-bg {
-    width: 60%;
+    width: 80%;
     height: 800px;
     margin: 0 auto;
     border-radius: 20px;
@@ -130,6 +130,24 @@ to{-o-transform:rotate(360deg)}
     top: 210px;
 }
 
+/*进度条容器********************************************************/
+.skye-mp3-progress {
+    z-index: 100;
+    height: 50px;
+    width: 280px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding-left: 20px;
+    position: absolute;
+    top: 250px;
+    transition: background-color 1s, top 1s;
+}
+.skye-mp3-progress_play {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0);
+    top: 150px;
+    transition: background-color 1s, top 1s;
+}
+
 /*当前播放歌曲名************************************************/
 .div-currentSong {
     font-size: 10px;
@@ -139,23 +157,9 @@ to{-o-transform:rotate(360deg)}
     font-size: 20px;
     color: #C4C4C4;
     position: absolute;
-    top: -200px;
-    left: 80px;
-}
-
-/*进度条********************************************************/
-.skye-mp3-progress {
-    z-index: 100;
-    height: 50px;
-    width: 280px;
-    background-color: rgba(0, 0, 0, 0.2);
-    padding-left: 20px;
-    position: absolute;
-    top: 250px;
-}
-.skye-mp3-progress_play {
-    z-index: 1;
-
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /*播放时的时间显示**********************************************/
@@ -171,13 +175,55 @@ to{-o-transform:rotate(360deg)}
 .span-currentTime_play {
     position: absolute;
     left: 80px;
-    top: 90px;
+    top: 190px;
 }
 .span-duration_play {
     position: absolute;
     right: 80px;
-    top: 90px;
+    top: 190px;
 }
+
+/*进度条********************************************************/
+.progressbar{
+    display: inline-block;
+    height: 2px;
+    width: 120px;
+    background-color: gray;
+    position: relative;
+    bottom: 5px;
+}
+.progressbar_play {
+    width: 230px;
+    height: 230px;
+    display: inline-block;
+    border: 2px solid gray;
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    background: none;
+    position: relative;
+    left: 14px;
+    top: -28px;
+}
+.bar{
+    display: inline-block;
+    width: 50%;
+    height: 120%;
+    background-color: #FD4848;
+    position: absolute;
+}
+.bar_play {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #FD4848;
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    background: none;
+    position: absolute;
+    left: -3px;
+    top: -3px;
+}
+
 
 /*上一曲*******************************************************/
 .button-pre {
@@ -208,7 +254,6 @@ to{-o-transform:rotate(360deg)}
     position: absolute;
     right: 20px;
     top: 275px;
-    /*transform: translateX(-50%);*/
     transition: top 1s, left 1s, right 1s, box-shadow 1s;
 }
 .button-play:hover {
@@ -226,7 +271,6 @@ to{-o-transform:rotate(360deg)}
     position: absolute;
     right: 125px;
     top: 215px;
-    /*transform: translateX(-50%);*/
     transition: top 1s, left 1s, right 1s, box-shadow 1s;
 }
 .button-play_play:hover {
@@ -268,7 +312,6 @@ to{-o-transform:rotate(360deg)}
   width: 280px;
   height: 40px;
   font-size: 15px;
-  /* margin-top: 0px; */
   padding-left: 20px;
 }
 .mp3-list {
@@ -292,45 +335,4 @@ to{-o-transform:rotate(360deg)}
 }
 .mp3-list-name {
     font-size: 12px;
-}
-/*---------------------------------------------------------------*/
-.progressbar{
-    display: inline-block;
-    height: 2px;
-    width: 120px;
-    background-color: gray;
-    position: relative;
-    bottom: 5px;
-}
-.progressbar_play {
-    width: 230px;
-    height: 230px;
-    display: inline-block;
-    border: 2px solid gray;
-    border-bottom-color: rgba(0, 0, 0, 0);
-    border-radius: 50%;
-    background: none;
-    position: relative;
-    left: 14px;
-    bottom: 5px;
-    top: -128px;
-}
-.bar{
-    display: inline-block;
-    width: 50%;
-    height: 120%;
-    background-color: #FD4848;
-    position: absolute;
-}
-.bar_play {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    border: 3px solid #FD4848;
-    border-bottom-color: rgba(0, 0, 0, 0);
-    border-radius: 50%;
-    background: none;
-    position: absolute;
-    left: -3px;
-    top: -3px;
 }

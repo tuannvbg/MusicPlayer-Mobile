@@ -9,7 +9,7 @@
                点击 暂停 时，暂停按钮切换为播放，页面切换到 列表页面
       2(done)、播放时，播放页面的图片转动
       3(done)、鼠标漂浮到 播放按钮、上下一曲按钮、列表，进度条按钮 上时效果变化
-      4、添加动画
+      4(done)、添加动画
 */
 
 
@@ -28,96 +28,17 @@ var playSwitch = function() {
             log('playing')
             // 切换暂停图标
             changeIcon(true, playButton)
-            // 切换至播放页面
-            // changePage(true)
-
             // 添加过渡动画
-            var playList = getElement('.skye-mp3-list')
-            // toggleClass(playList, 'bounceInUp')
-            // toggleClass(playList, 'bounceOutDown')
-            toggleClass(playList, 'skye-mp3-list_play')
+            addTransition(true, playButton)
 
-            var img = getElement('.skye-mp3-img')
-            var circles = getElements('.circle')
-            toggleClass(img, 'skye-mp3-img_play')
-            setTimeout(function(){
-                toggleClass(img, 'img-rotate_play')
-                for (var i = 0; i < circles.length; i++) {
-                    toggleClass(circles[i], 'circle_play')
-                }
-            }, 1000)
-
-            var progressContainer = getElement('.skye-mp3-progress')
-            toggleClass(progressContainer, 'skye-mp3-progress_play')
-
-            var currentSongName = getElement('#id-div-currentSong')
-            toggleClass(currentSongName, 'div-currentSong_play')
-
-            var currentTime = getElement('#id-span-currentTime')
-            var totalTime = getElement('#id-span-duration')
-            toggleClass(currentTime, 'span-currentTime_play')
-            toggleClass(totalTime, 'span-duration_play')
-
-            var progressbar = getElement('#progressbar')
-            var bar = getElement('.bar')
-            toggleClass(progressbar, 'progressbar_play')
-            toggleClass(bar, 'bar_play')
-
-            toggleClass(playButton, 'button-play_play')
-            var preButton = getElement('#id-button-pre')
-            var nextButton = getElement('#id-button-next')
-            toggleClass(preButton, 'button-pre_play')
-            toggleClass(nextButton, 'button-next_play')
-
-
-
-            addAnimate()
         } else {
             musicPlayer.pause()
             log('paused')
             // 切换播放图标
             changeIcon(false, playButton)
-
             // 添加过渡动画
-            var playList = getElement('.skye-mp3-list')
-            // toggleClass(playList, 'bounceOutDown')
-            // toggleClass(playList, 'bounceInUp')
-            toggleClass(playList, 'skye-mp3-list_play')
+            addTransition(false, playButton)
 
-            var img = getElement('.skye-mp3-img')
-            toggleClass(img, 'skye-mp3-img_play')
-            toggleClass(img, 'img-rotate_play')
-
-            var circles = getElements('.circle')
-            for (var i = 0; i < circles.length; i++) {
-                toggleClass(circles[i], 'circle_play')
-            }
-
-            var progressContainer = getElement('.skye-mp3-progress')
-            toggleClass(progressContainer, 'skye-mp3-progress_play')
-
-            var currentSongName = getElement('#id-div-currentSong')
-            toggleClass(currentSongName, 'div-currentSong_play')
-
-            var currentTime = getElement('#id-span-currentTime')
-            var totalTime = getElement('#id-span-duration')
-            toggleClass(currentTime, 'span-currentTime_play')
-            toggleClass(totalTime, 'span-duration_play')
-
-            var progressbar = getElement('#progressbar')
-            var bar = getElement('.bar')
-            toggleClass(progressbar, 'progressbar_play')
-            toggleClass(bar, 'bar_play')
-
-            toggleClass(playButton, 'button-play_play')
-            var preButton = getElement('#id-button-pre')
-            var nextButton = getElement('#id-button-next')
-            toggleClass(preButton, 'button-pre_play')
-            toggleClass(nextButton, 'button-next_play')
-
-
-
-            addAnimate()
         }
 
     })
@@ -136,10 +57,39 @@ var changeIcon = function(state, button) {
     }
 }
 
-// 添加动画
-var addAnimate = function() {
-
+// 添加过渡动画
+var transition = function(selector, transitionClass) {
+    var elements = getElements(selector)
+    for (var i = 0; i < elements.length; i++) {
+        toggleClass(elements[i], transitionClass)
+        log('elements: ', elements[i])
+    }
 }
+
+var addTransition = function(flag, button) {
+    var img = getElement('.skye-mp3-img')
+    if(flag) {
+        setTimeout(function(){
+            toggleClass(img, 'img-rotate_play')
+            transition(".circle", 'circle_play')
+        }, 1000)
+    } else {
+        toggleClass(img, 'img-rotate_play')
+        transition(".circle", 'circle_play')
+    }
+    transition(".skye-mp3-list", 'skye-mp3-list_play')
+    transition(".skye-mp3-img", 'skye-mp3-img_play')
+    transition("#skye-mp3-progress", 'skye-mp3-progress_play')
+    transition("#id-div-currentSong", 'div-currentSong_play')
+    transition("#id-span-currentTime", 'span-currentTime_play')
+    transition("#id-span-duration", 'span-duration_play')
+    transition("#progressbar", 'progressbar_play')
+    transition(".bar", 'bar_play')
+    toggleClass(button, 'button-play_play')
+    transition("#id-button-pre", 'button-pre_play')
+    transition("#id-button-next", 'button-next_play')
+}
+
 
 
 

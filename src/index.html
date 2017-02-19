@@ -4,8 +4,6 @@
         <meta charset="utf-8">
         <title>Music Player</title>
         <link id='id-link-css' rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/animate.css">
-        <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css"> -->
     </head>
     <body>
 
@@ -16,7 +14,8 @@
               </audio>
 
               <div class="skye-mp3-imgPro">
-                  <img class="skye-mp3-img" src="../imgs/1.jpg">
+                  <img class="skye-mp3-img" src="../imgs/3.jpg">
+
                   <div class=" circle circle1"></div>
                   <div class=" circle circle2"></div>
                   <div class=" circle circle3"></div>
@@ -24,13 +23,14 @@
                   <div class=" circle circle5"></div>
                   <div class=" circle circle6"></div>
                   <div class=" circle circle7"></div>
-                  <div class="skye-mp3-progress">
-                      <div id='id-div-currentSong' class="div-currentSong">当前无播放歌曲</div>
+
+                  <div id='skye-mp3-progress' class="skye-mp3-progress">
+                      <div id='id-div-currentSong' class="div-currentSong">Playing</div>
                       <span id='id-span-currentTime' class="time span-currentTime">00:00</span>
-                      <!-- <input id='id-input-progress' class="progress" type="range" min="0" max="1" value="0" step="0.01"/> -->
                       <div class="progressbar" id="progressbar"><span class="bar"></span></div>
                       <span id='id-span-duration' class="time span-duration">00:00</span>
                   </div>
+
               </div>
 
               <div class="skye-mp3-control">
@@ -40,16 +40,19 @@
               </div>
 
               <div class="skye-mp3-list">
-                  <div id="mp3-list-title" class="mp3-list-title animated">播放列表</div>
-                  <div class="mp3-list animated" data-path=1>
+                  <div id="mp3-list-title" class="mp3-list-title">播放列表</div>
+
+                  <div class="mp3-list" data-path=1>
                       <img class="mp3-list-img" src="../imgs/1.jpg">
                       <span class="mp3-list-name">费玉清 - 小幸运</span>
                   </div>
-                  <div class="mp3-list animated" data-path=2>
+
+                  <div class="mp3-list" data-path=2>
                       <img class="mp3-list-img" src="../imgs/2.jpg">
                       <span class="mp3-list-name">陈奕迅 - 阴天快乐</span>
                   </div>
-                  <div class="mp3-list animated" data-path=3>
+
+                  <div class="mp3-list" data-path=3>
                       <img class="mp3-list-img" src="../imgs/3.jpg">
                       <span class="mp3-list-name">好妹妹乐队 - 不说再见</span>
                   </div>
@@ -58,8 +61,6 @@
       </div>
 
       <script src='js/skye.js'></script>
-      <!-- <script src='js/index.js'></script> -->
       <script src='js/index1.js'></script>
-      <!-- <script src='js/progressbar.js'></script> -->
     </body>
 </html>
