@@ -1,3 +1,26 @@
+@-webkit-keyframes rotate{
+from{-webkit-transform:rotate(0deg)}
+to{-webkit-transform:rotate(360deg)}
+}
+@-moz-keyframes rotate{
+from{-moz-transform:rotate(0deg)}
+to{-moz-transform:rotate(360deg)}
+}
+@-ms-keyframes rotate{
+from{-ms-transform:rotate(0deg)}
+to{-ms-transform:rotate(360deg)}
+}
+@-o-keyframes rotate{
+from{-o-transform:rotate(0deg)}
+to{-o-transform:rotate(360deg)}
+}
+
+
+.hide {
+    display: none;
+}
+
+/*背景**********************************************************/
 .skye-mp3-bg {
     width: 60%;
     height: 800px;
@@ -7,9 +30,10 @@
     background-color: #FD4848;
 }
 
+/*整个播放器*****************************************************/
 .skye-mp3-player {
     width: 300px;
-    height: auto;
+    height: 520px;
     margin: 0 auto;
     color: white;
     box-shadow: 5px 5px 29px #333333;
@@ -20,17 +44,106 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
+/*专辑图片与进度条容器*******************************************/
 .skye-mp3-imgPro {
     position: relative;
 }
 
+/*专辑图片******************************************************/
 .skye-mp3-img {
+    z-index: 99;
     width: 300px;
     height: 300px;
+    border-radius: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 1s, height 1s, border-radius 1s, top 1s;
 
 }
+.skye-mp3-img_play {
+    z-index: 99;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 1s, height 1s, border-radius 1s, top 1s;
+}
+.img-rotate_play {
+    left: 16.5%;
+    animation: 9.5s linear 0s normal both infinite rotate;
+    -webkit-animation:9.5s linear 0s normal both infinite rotate;
+}
 
+/*CD 圆环效果***************************************************/
+.circle {
+    z-index: 100;
+    opacity: 0;
+    border: 1px solid #4d4d4d;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 1s;
+}
+.circle_play {
+    opacity: 1;
+    transition: opacity 1s;
+}
+.circle1 {
+    width: 180px;
+    height: 180px;
+    top: 150px;
+}
+.circle2 {
+    width: 160px;
+    height: 160px;
+    top: 160px;
+}
+.circle3 {
+    width: 140px;
+    height: 140px;
+    top: 170px;
+}
+.circle4 {
+    width: 120px;
+    height: 120px;
+    top: 180px;
+}
+.circle5 {
+    width: 100px;
+    height: 100px;
+    top: 190px;
+}
+.circle6 {
+    width: 80px;
+    height: 80px;
+    top: 200px;
+}
+.circle7 {
+    width: 60px;
+    height: 60px;
+    top: 210px;
+}
+
+/*当前播放歌曲名************************************************/
+.div-currentSong {
+    font-size: 10px;
+    color: #C4C4C4;
+}
+.div-currentSong_play {
+    font-size: 20px;
+    color: #C4C4C4;
+    position: absolute;
+    top: -200px;
+    left: 80px;
+}
+
+/*进度条********************************************************/
 .skye-mp3-progress {
     z-index: 100;
     height: 50px;
@@ -40,7 +153,124 @@
     position: absolute;
     top: 250px;
 }
+.skye-mp3-progress_play {
+    z-index: 1;
 
+}
+
+/*播放时的时间显示**********************************************/
+.time {
+    display: inline;
+    font-size: 5px;
+    color: gray;
+}
+.time_play {
+    font-size: 10px;
+    color: #C4C4C4;
+}
+.span-currentTime_play {
+    position: absolute;
+    left: 80px;
+    top: 90px;
+}
+.span-duration_play {
+    position: absolute;
+    right: 80px;
+    top: 90px;
+}
+
+/*上一曲*******************************************************/
+.button-pre {
+    display: none;
+}
+.button-pre_play {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 450px;
+    left: 90px;
+}
+.button-pre_play:hover {
+    opacity: 0.8;
+}
+
+/*播放 & 暂停***************************************************/
+.button-play {
+    width: 50px;
+    height: 50px;
+    z-index: 101;
+    font-size: 25px;
+    background-color: white;
+    border: 0px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px #FFFFFF;
+    position: absolute;
+    right: 20px;
+    top: 275px;
+    /*transform: translateX(-50%);*/
+    transition: top 1s, left 1s, right 1s, box-shadow 1s;
+}
+.button-play:hover {
+    opacity: 0.9;
+}
+.button-play_play {
+    width: 50px;
+    height: 50px;
+    z-index: 101;
+    font-size: 25px;
+    background-color: white;
+    border: 0px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px #FFFFFF;
+    position: absolute;
+    right: 125px;
+    top: 215px;
+    /*transform: translateX(-50%);*/
+    transition: top 1s, left 1s, right 1s, box-shadow 1s;
+}
+.button-play_play:hover {
+    box-shadow: 0px 0px 20px #FFFFFF;
+}
+
+/*下一曲****************************************************/
+.button-next {
+    display: none;
+}
+.button-next_play {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 450px;
+    right: 90px;
+}
+.button-next_play:hover {
+    opacity: 0.8;
+}
+
+/*播放列表******************************************************/
+.skye-mp3-list {
+    opacity: 1;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    transition: opacity 1s, bottom 1s;
+}
+
+.skye-mp3-list_play {
+    opacity: 0;
+    bottom: -100px;
+    transition: opacity 1s, bottom 1s;
+}
+
+.mp3-list-title {
+  width: 280px;
+  height: 40px;
+  font-size: 15px;
+  /* margin-top: 0px; */
+  padding-left: 20px;
+}
 .mp3-list {
     display: block;
     width: 280px;
@@ -48,63 +278,59 @@
     background-color: #262626;
     border: 0px;
     padding-left: 20px;
-}
 
+}
 .mp3-list:hover {
     opacity: 0.9;
     box-shadow: inset 0px -50px 100px -58px #FFFFFF;
 }
-
 .mp3-list-img {
     display: inline-block;
     margin-top: 10px;
     width: 30px;
     height: 30px;
 }
-
 .mp3-list-name {
     font-size: 12px;
 }
-
-.time {
-    font-size: 10px;
-    color: #C4C4C4;
+/*---------------------------------------------------------------*/
+.progressbar{
+    display: inline-block;
+    height: 2px;
+    width: 120px;
+    background-color: gray;
+    position: relative;
+    bottom: 5px;
 }
-
-#id-button-pre {
-    display: none;
-}
-
-#id-button-play {
-    width: 50px;
-    height: 50px;
-    z-index: 101;
-    color: white;
-    font-size: 25px;
-    background-color: white;
-    box-shadow: 0px 0px 20px #FFFFFF;
-    position: absolute;
-    right: 20px;
-    top: 275px;
-    border: 0px;
+.progressbar_play {
+    width: 230px;
+    height: 230px;
+    display: inline-block;
+    border: 2px solid gray;
+    border-bottom-color: rgba(0, 0, 0, 0);
     border-radius: 50%;
+    background: none;
+    position: relative;
+    left: 14px;
+    bottom: 5px;
+    top: -128px;
 }
-
-#id-button-play:hover {
-    opacity: 0.9;
+.bar{
+    display: inline-block;
+    width: 50%;
+    height: 120%;
+    background-color: #FD4848;
+    position: absolute;
 }
-
-#id-button-next {
-    display: none;
-}
-
-#mp3-list-title {
-    width: 280px;
-    height: 40px;
-    margin-top: 25px;
-    padding-left: 20px;
-}
-
-#id-div-currentSong {
-    color: #C4C4C4;
+.bar_play {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #FD4848;
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    background: none;
+    position: absolute;
+    left: -3px;
+    top: -3px;
 }
