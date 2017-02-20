@@ -50,10 +50,10 @@ var changeIcon = function(state, button) {
     //
     if(state) {
         // 状态为 true, 说明此时需要切换为暂停按钮
-        button.src = '../icons/pause.png'
+        button.src = 'res/icons/pause.png'
     } else {
         // 切换为播放按钮
-        button.src = '../icons/play.png'
+        button.src = 'res/icons/play.png'
     }
 }
 
@@ -62,7 +62,6 @@ var transition = function(selector, transitionClass) {
     var elements = getElements(selector)
     for (var i = 0; i < elements.length; i++) {
         toggleClass(elements[i], transitionClass)
-        log('elements: ', elements[i])
     }
 }
 
