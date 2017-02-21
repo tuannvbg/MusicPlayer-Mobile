@@ -20,6 +20,10 @@ to{-o-transform:rotate(360deg)}
     display: none;
 }
 
+body {
+    font-family: 'Microsoft Yahei';
+}
+
 /*背景**********************************************************/
 .skye-mp3-bg {
     width: 80%;
@@ -150,7 +154,7 @@ to{-o-transform:rotate(360deg)}
 
 /*当前播放歌曲名************************************************/
 .div-currentSong {
-    font-size: 10px;
+    font-size: 13px;
     color: #C4C4C4;
 }
 .div-currentSong_play {
@@ -165,8 +169,8 @@ to{-o-transform:rotate(360deg)}
 /*播放时的时间显示**********************************************/
 .time {
     display: inline;
-    font-size: 5px;
-    color: gray;
+    font-size: 10px;
+    color: #C4C4C4;
 }
 .time_play {
     font-size: 10px;
