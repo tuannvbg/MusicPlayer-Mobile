@@ -16,11 +16,11 @@
 
 // 得到播放器元素
 var musicPlayer = getElement('#id-audio-player')
+// 得到播放按钮
+var playButton = getElement('#id-button-play')
 
 // 1、播放 & 暂停事件绑定
 var playSwitch = function() {
-    // 得到播放按钮
-    var playButton = getElement('#id-button-play')
     // 绑定播放按钮事件
     bindEvent(playButton, 'click', function(){
         if(musicPlayer.paused) {
@@ -109,7 +109,6 @@ var updateTime = function() {
     var spanDura = getElement('#id-span-duration')
     var progress = getElement('#id-input-progress')
     var duration = parseInt(musicPlayer.duration)
-    log('duration', duration)
     // 进度条与时间同步
     var a = setInterval(function(){
         var currTime = parseInt(musicPlayer.currentTime)
@@ -160,6 +159,13 @@ var playList = function() {
         divName.innerHTML = name
         // musicPlayer.canplay = updateTime()
         musicPlayer.play()
+        log('playing')
+        // 切换暂停图标
+        changeIcon(true, playButton)
+        // 添加过渡动画
+        addTransition(true, playButton)
+
+        updateTime()
     })
 }
 
