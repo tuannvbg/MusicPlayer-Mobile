@@ -170,7 +170,8 @@ var playList = function() {
 }
 
 // 列表循环时存在 bug
-var playLoop = function() {
+// 改变资源的函数
+var changeRes = function(element, triggerEvent) {
     // 得到列表中所有音乐的路径并存入数组
     var list = document.querySelectorAll('.mp3-list')
     var paths = []
@@ -183,15 +184,44 @@ var playLoop = function() {
         imgPaths.push(imgPath)
     }
     //
-    bindEvent(musicPlayer, 'ended', function(){
+    bindEvent(element, triggerEvent, function(){
+        // musicPlayer.pause()
         var songImg = getElement(".skye-mp3-img")
         var currSrc = musicPlayer.src
+        log('currSrc :', currSrc)
         var currNum = parseInt(currSrc.slice(currSrc.length - 5, currSrc.length - 4))
+        log('currNum :', currNum)
         musicPlayer.src = paths[currNum % list.length]
+        log('nextSrc :', paths[currNum % list.length])
         songImg.src = imgPaths[currNum % list.length]
+        log('nextImg :', imgPaths[currNum % list.length])
         musicPlayer.canplay = updateTime()
         musicPlayer.play()
     })
+}
+
+// 绑定 上一曲 和 下一曲 按钮事件
+var bindPreNext = function() {
+    var preBtn = getElement('#id-button-pre')
+    var nextBtn = getElement('#id-button-next')
+    changeRes(nextBtn, 'click')
+    changeRes(preBtn, 'click')
+    changeRes(musicPlayer, 'end')
+    // var songImg = getElement(".skye-mp3-img")
+    // var currSrc = musicPlayer.src
+    // var currNum = parseInt(currSrc.slice(currSrc.length - 5, currSrc.length - 4))
+    // bindEvent(preBtn, 'click', function(){
+    //     currNum -= 1
+    //     musicPlayer.src = paths[currNum % list.length]
+    //     songImg.src = imgPaths[currNum % list.length]
+    //     musicPlayer.play()
+    // })
+    // bindEvent(nextBtn, 'click', function(){
+    //     currNum += 1
+    //     musicPlayer.src = paths[currNum % list.length]
+    //     songImg.src = imgPaths[currNum % list.length]
+    //     musicPlayer.play()
+    // })
 }
 
 
@@ -213,6 +243,6 @@ var __skye = function() {
     playSwitch()
     showTime()
     playList()
-    playLoop()
+    bindPreNext()
 }
 // __skye()
