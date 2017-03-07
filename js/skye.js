@@ -12,13 +12,13 @@ var getElements = function(selector) {
 }
 
 var bindEvent = function(element, eventName, callback) {
-    element.addEventListener(eventName, callback)
+    element.addEventListener(eventName, callback, true)
 }
 
 var bindEventAll = function(selector, eventName, callback) {
     var elements = document.querySelectorAll(selector)
     for (var i = 0; i < elements.length; i++) {
-        elements[i].addEventListener(eventName, callback)
+        elements[i].addEventListener(eventName, callback, true)
     }
 }
 

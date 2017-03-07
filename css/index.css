@@ -158,6 +158,7 @@ body {
     color: #C4C4C4;
 }
 .div-currentSong_play {
+    text-align: center;
     width: 205px;
     font-size: 20px;
     color: #C4C4C4;
@@ -206,29 +207,49 @@ body {
     border-radius: 50%;
     background: none;
     position: relative;
-    left: 14px;
-    top: -28px;
-}
-.bar{
-    display: inline-block;
-    width: 50%;
-    height: 120%;
-    background-color: #FD4848;
-    position: absolute;
-}
-.bar_play {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    border: 3px solid #FD4848;
-    border-bottom-color: rgba(0, 0, 0, 0);
-    border-radius: 50%;
-    background: none;
-    position: absolute;
-    left: -3px;
-    top: -3px;
+    left: 15px;
+    top: -29px;
 }
 
+.progressCircle{
+    display: none;
+    transform: rotate(180deg);
+}
+.progressCircle_play {
+    display: block;
+    z-index: 200;
+    /*width: 230px;
+    height: 230px;*/
+    position: absolute;
+    left: 0;
+    top: -70px;
+}
+
+/* 进度条轨道样式 */
+input[type="range"]{
+    -webkit-appearance: none;
+    border-radius: 2px;
+    width: 125px;
+    height: 3px;
+    background: -webkit-linear-gradient(left ,#FD4848 0%,#FD4848 0%,#C4C4C4 0%, #C4C4C4 100%);
+    outline: none;
+    transition: 0.1s;
+}
+/* 进度条滑块样式 */
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #FD4848;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+/* 进度条前后样式 */
+input[type="range"]::-webkit-slider-thumb:hover,
+input[type="range"]::-webkit-slider-thumb:active{
+    width: 16px;
+    height: 16px;
+}
 
 /*上一曲*******************************************************/
 .button-pre {
