@@ -158,8 +158,7 @@ body {
     color: #C4C4C4;
 }
 .div-currentSong_play {
-    width: 205px;
-    font-size: 20px;
+    font-size: 17px;
     color: #C4C4C4;
     position: absolute;
     top: -100px;
@@ -267,7 +266,7 @@ body {
 .button-play_play {
     width: 50px;
     height: 50px;
-    z-index: 101;
+    z-index: 100;
     font-size: 25px;
     background-color: white;
     border: 0px;
@@ -279,6 +278,40 @@ body {
     transition: top 1s, left 1s, right 1s, box-shadow 1s;
 }
 .button-play_play:hover {
+    box-shadow: 0px 0px 20px #FFFFFF;
+}
+.button-pause {
+    width: 50px;
+    height: 50px;
+    z-index: 100;
+    font-size: 25px;
+    background-color: white;
+    border: 0px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px #FFFFFF;
+    position: absolute;
+    right: 20px;
+    top: 275px;
+    transition: top 1s, left 1s, right 1s, box-shadow 1s;
+}
+.button-pause:hover {
+    opacity: 0.9;
+}
+.button-pause_play {
+    width: 50px;
+    height: 50px;
+    z-index: 101;
+    font-size: 25px;
+    background-color: white;
+    border: 0px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px #FFFFFF;
+    position: absolute;
+    right: 125px;
+    top: 215px;
+    transition: top 1s, left 1s, right 1s, box-shadow 1s;
+}
+.button-pause_play:hover {
     box-shadow: 0px 0px 20px #FFFFFF;
 }
 

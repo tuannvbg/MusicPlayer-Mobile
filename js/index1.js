@@ -14,50 +14,50 @@
 
 
 
-// 得到播放器元素
-var musicPlayer = getElement('#id-audio-player')
+
 // 得到播放按钮
 var playButton = getElement('#id-button-play')
+var pauseButton = getElement('#id-button-pause')
 
+// (bug) 播放和暂停功能与列表播放的事件有冲突
 // 1、播放 & 暂停事件绑定
 var playSwitch = function() {
+    // 得到播放器元素
+    var musicPlayer = getElement('#id-audio-player')
     // 绑定播放按钮事件
     bindEvent(playButton, 'click', function(){
-        if(musicPlayer.paused) {
-            musicPlayer.play()
-            log('playing')
-            // 切换暂停图标
-            changeIcon(true, playButton)
-            // 添加过渡动画
-            addTransition(true, playButton)
+        musicPlayer.play()
+        log('playing')
+        // 切换暂停图标
+        // changeIcon(true, playButton)
+        // 添加过渡动画
+        addTransition(true)
 
-            updateTime()
-// (bug) 播放和暂停功能与列表播放的事件有冲突
-        } else if(musicPlayer.played) {
-            musicPlayer.pause()
-            log('paused')
-            // 切换播放图标
-            changeIcon(false, playButton)
-            // 添加过渡动画
-            addTransition(false, playButton)
+        updateTime()
 
-        }
-
+    })
+    bindEvent(pauseButton, 'click', function(){
+        musicPlayer.pause()
+        log('paused')
+        // 切换播放图标
+        // changeIcon(false, playButton)
+        // 添加过渡动画
+        addTransition(false)
     })
 
 }
 
 // 切换播放图标函数
-var changeIcon = function(state, button) {
-    //
-    if(state) {
-        // 状态为 true, 说明此时需要切换为暂停按钮
-        button.src = 'res/icons/pause.png'
-    } else {
-        // 切换为播放按钮
-        button.src = 'res/icons/play.png'
-    }
-}
+// var changeIcon = function(state, button) {
+//     //
+//     if(state) {
+//         // 状态为 true, 说明此时需要切换为暂停按钮
+//         button.src = 'res/icons/pause.png'
+//     } else {
+//         // 切换为播放按钮
+//         button.src = 'res/icons/play.png'
+//     }
+// }
 
 // 添加过渡动画
 var transition = function(selector, transitionClass) {
@@ -67,7 +67,7 @@ var transition = function(selector, transitionClass) {
     }
 }
 
-var addTransition = function(flag, button) {
+var addTransition = function(flag) {
     var img = getElement('.skye-mp3-img')
     if(flag) {
         setTimeout(function(){
@@ -86,13 +86,16 @@ var addTransition = function(flag, button) {
     transition("#id-span-duration", 'span-duration_play')
     transition("#progressbar", 'progressbar_play')
     transition(".bar", 'bar_play')
-    toggleClass(button, 'button-play_play')
+    transition("#id-button-play", 'button-play_play')
+    transition("#id-button-pause", 'button-pause_play')
     transition("#id-button-pre", 'button-pre_play')
     transition("#id-button-next", 'button-next_play')
 }
 
 // 显示歌曲的 当前时间 和 总时间
 var showTime = function() {
+    // 得到播放器元素
+    var musicPlayer = getElement('#id-audio-player')
     var spanDura = getElement('#id-span-duration')
     var spanCurr = getElement('#id-span-currentTime')
     // 获取当前歌曲的总时间并将其写入 duration
@@ -105,6 +108,8 @@ var showTime = function() {
 
 }
 var updateTime = function() {
+    // 得到播放器元素
+    var musicPlayer = getElement('#id-audio-player')
     var spanCurr = getElement('#id-span-currentTime')
     var spanDura = getElement('#id-span-duration')
     var progress = getElement('#id-input-progress')
@@ -145,6 +150,8 @@ var rjust = function(s, width, fillchar=' ') {
 }
 
 var playList = function() {
+    // 得到播放器元素
+    var musicPlayer = getElement('#id-audio-player')
     var selector = '.mp3-list'
     var divName = getElement('#id-div-currentSong')
     var songImg = getElement(".skye-mp3-img")
@@ -157,21 +164,30 @@ var playList = function() {
         musicPlayer.src = path
         songImg.src = imgPath
         divName.innerHTML = name
-        // musicPlayer.canplay = updateTime()
-        musicPlayer.play()
-        log('playing')
-        // 切换暂停图标
-        changeIcon(true, playButton)
-        // 添加过渡动画
-        addTransition(true, playButton)
+        // // musicPlayer.canplay = updateTime()
+        // musicPlayer.play()
+        // log('playing')
+        // // 切换暂停图标
+        // changeIcon(true, playButton)
+        // // 添加过渡动画
+        // addTransition(true, playButton)
+        //
+        // updateTime()
 
-        updateTime()
+        setTimeout(function(){
+            // musicPlayer.canplay = updateTime()
+            // musicPlayer.play()
+            playButton.click()
+        }, 500)
+
     })
 }
 
 // 列表循环时存在 bug
 // 改变资源的函数
 var changeRes = function(element, triggerEvent) {
+    // 得到播放器元素
+    var musicPlayer = getElement('#id-audio-player')
     // 得到列表中所有音乐的路径并存入数组
     var list = document.querySelectorAll('.mp3-list')
     var paths = []
@@ -185,7 +201,7 @@ var changeRes = function(element, triggerEvent) {
     }
     //
     bindEvent(element, triggerEvent, function(){
-        // musicPlayer.pause()
+        musicPlayer.pause()
         var songImg = getElement(".skye-mp3-img")
         var currSrc = musicPlayer.src
         log('currSrc :', currSrc)
@@ -195,33 +211,22 @@ var changeRes = function(element, triggerEvent) {
         log('nextSrc :', paths[currNum % list.length])
         songImg.src = imgPaths[currNum % list.length]
         log('nextImg :', imgPaths[currNum % list.length])
-        musicPlayer.canplay = updateTime()
-        musicPlayer.play()
+        setTimeout(function(){
+            musicPlayer.canplay = updateTime()
+            musicPlayer.play()
+        }, 500)
     })
 }
 
 // 绑定 上一曲 和 下一曲 按钮事件
 var bindPreNext = function() {
+    // 得到播放器元素
+    var musicPlayer = getElement('#id-audio-player')
     var preBtn = getElement('#id-button-pre')
     var nextBtn = getElement('#id-button-next')
     changeRes(nextBtn, 'click')
     changeRes(preBtn, 'click')
     changeRes(musicPlayer, 'end')
-    // var songImg = getElement(".skye-mp3-img")
-    // var currSrc = musicPlayer.src
-    // var currNum = parseInt(currSrc.slice(currSrc.length - 5, currSrc.length - 4))
-    // bindEvent(preBtn, 'click', function(){
-    //     currNum -= 1
-    //     musicPlayer.src = paths[currNum % list.length]
-    //     songImg.src = imgPaths[currNum % list.length]
-    //     musicPlayer.play()
-    // })
-    // bindEvent(nextBtn, 'click', function(){
-    //     currNum += 1
-    //     musicPlayer.src = paths[currNum % list.length]
-    //     songImg.src = imgPaths[currNum % list.length]
-    //     musicPlayer.play()
-    // })
 }
 
 
