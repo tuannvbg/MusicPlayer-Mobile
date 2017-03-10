@@ -228,9 +228,8 @@ body {
 /* 进度条轨道样式 */
 input[type="range"]{
     -webkit-appearance: none;
-    border-radius: 2px;
     width: 125px;
-    height: 3px;
+    height: 2px;
     background: -webkit-linear-gradient(left ,#FD4848 0%,#FD4848 0%,#C4C4C4 0%, #C4C4C4 100%);
     outline: none;
     transition: 0.1s;
@@ -247,8 +246,24 @@ input[type="range"]::-webkit-slider-thumb{
 /* 进度条前后样式 */
 input[type="range"]::-webkit-slider-thumb:hover,
 input[type="range"]::-webkit-slider-thumb:active{
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
+}
+
+/*快退*******************************************************/
+.button-slower {
+    display: none;
+}
+.button-slower_play {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 450px;
+    left: 30px;
+}
+.button-slower_play:hover {
+    opacity: 0.7;
 }
 
 /*上一曲*******************************************************/
@@ -257,10 +272,10 @@ input[type="range"]::-webkit-slider-thumb:active{
 }
 .button-pre_play {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     position: absolute;
-    top: 450px;
+    top: 445px;
     left: 90px;
 }
 .button-pre_play:hover {
@@ -309,13 +324,29 @@ input[type="range"]::-webkit-slider-thumb:active{
 }
 .button-next_play {
     display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 445px;
+    right: 90px;
+}
+.button-next_play:hover {
+    opacity: 0.7;
+}
+
+/*快进*******************************************************/
+.button-faster {
+    display: none;
+}
+.button-faster_play {
+    display: inline-block;
     width: 20px;
     height: 20px;
     position: absolute;
     top: 450px;
-    right: 90px;
+    right: 30px;
 }
-.button-next_play:hover {
+.button-faster_play:hover {
     opacity: 0.7;
 }
 

@@ -88,6 +88,8 @@ var addTransition = function(flag, button) {
     transition("#progressbar", 'progressbar_play')
     transition("#progressCircle", 'progressCircle_play')
     toggleClass(button, 'button-play_play')
+    transition("#id-button-faster", 'button-faster_play')
+    transition("#id-button-slower", 'button-slower_play')
     transition("#id-button-pre", 'button-pre_play')
     transition("#id-button-next", 'button-next_play')
 }
