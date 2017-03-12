@@ -180,12 +180,12 @@ body {
 }
 .span-currentTime_play {
     position: absolute;
-    left: 80px;
+    left: 60px;
     top: 190px;
 }
 .span-duration_play {
     position: absolute;
-    right: 80px;
+    right: 60px;
     top: 190px;
 }
 
@@ -250,17 +250,63 @@ input[type="range"]::-webkit-slider-thumb:active{
     height: 14px;
 }
 
+/*循环播放*******************************************************/
+.button-circlePlay {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    opacity: 0;
+    position: absolute;
+    bottom: -100px;
+    left: 115px;
+    transition: opacity 1s, bottom 1s;
+}
+.button-circlePlay_play {
+    z-index: 201;
+    opacity: 1;
+    bottom: 25%;
+    transition: opacity 1s, bottom 1s;
+}
+.button-circlePlay_play:hover {
+    opacity: 0.7;
+}
+
+/*随机播放*******************************************************/
+.button-randomPlay {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    opacity: 0;
+    position: absolute;
+    bottom: -100px;
+    right: 115px;
+    transition: opacity 1s, bottom 1s;
+}
+.button-randomPlay_play {
+    z-index: 201;
+    opacity: 1;
+    bottom: 25%;
+    transition: opacity 1s, bottom 1s;
+}
+.button-randomPlay_play:hover {
+    opacity: 0.7;
+}
+
 /*快退*******************************************************/
 .button-slower {
-    display: none;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    opacity: 0;
+    position: absolute;
+    bottom: -100px;
+    left: 30px;
+    transition: opacity 1s, bottom 1s;
 }
 .button-slower_play {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 450px;
-    left: 30px;
+    opacity: 1;
+    bottom: 10%;
+    transition: opacity 1s, bottom 1s;
 }
 .button-slower_play:hover {
     opacity: 0.7;
@@ -268,15 +314,19 @@ input[type="range"]::-webkit-slider-thumb:active{
 
 /*上一曲*******************************************************/
 .button-pre {
-    display: none;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    position: absolute;
+    bottom: -100px;
+    left: 90px;
+    transition: opacity 1s, bottom 1s;
 }
 .button-pre_play {
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    top: 445px;
-    left: 90px;
+    opacity: 1;
+    bottom: 9.6%;
+    transition: opacity 1s, bottom 1s;
 }
 .button-pre_play:hover {
     opacity: 0.7;
@@ -320,15 +370,19 @@ input[type="range"]::-webkit-slider-thumb:active{
 
 /*下一曲****************************************************/
 .button-next {
-    display: none;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  position: absolute;
+  bottom: -100px;
+  right: 90px;
+  transition: opacity 1s, bottom 1s;
 }
 .button-next_play {
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    top: 445px;
-    right: 90px;
+    opacity: 1;
+    bottom: 9.6%;
+    transition: opacity 1s, bottom 1s;
 }
 .button-next_play:hover {
     opacity: 0.7;
@@ -336,15 +390,19 @@ input[type="range"]::-webkit-slider-thumb:active{
 
 /*快进*******************************************************/
 .button-faster {
-    display: none;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  opacity: 0;
+  position: absolute;
+  bottom: -100px;
+  right: 30px;
+  transition: opacity 1s, bottom 1s;
 }
 .button-faster_play {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 450px;
-    right: 30px;
+    opacity: 1;
+    bottom: 10%;
+    transition: opacity 1s, bottom 1s;
 }
 .button-faster_play:hover {
     opacity: 0.7;

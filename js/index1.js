@@ -88,6 +88,8 @@ var addTransition = function(flag, button) {
     transition("#progressbar", 'progressbar_play')
     transition("#progressCircle", 'progressCircle_play')
     toggleClass(button, 'button-play_play')
+    transition("#id-button-circlePlay", 'button-circlePlay_play')
+    transition("#id-button-randomPlay", 'button-randomPlay_play')
     transition("#id-button-faster", 'button-faster_play')
     transition("#id-button-slower", 'button-slower_play')
     transition("#id-button-pre", 'button-pre_play')
@@ -151,7 +153,7 @@ var drawCircleProgress = function() {
         circleContext.clearRect(0,0, circleWidth, circleHeight)
         // 把range的度数值换成Math.PI值
         rangeValue = Number(270 * range.value / range.max)
-        log('rangeValue: ', rangeValue)
+        // log('rangeValue: ', rangeValue)
         // rangeValue = Number(270)
         // 滑动条获得的是度数值
         circleValue.endAngle = circleValue.beginAngle + (rangeValue / 360) * 2 * Math.PI
@@ -225,9 +227,38 @@ var rjust = function(s, width, fillchar=' ') {
     return result
 }
 
+// 随机 循环 模式切换
+var changePlayMode = function() {
+    var circlePlay = getElement('#id-button-circlePlay')
+    var randomPlay = getElement('#id-button-randomPlay')
+    var slowerPlay = getElement('#id-button-slower')
+    var fasterPlay = getElement('#id-button-faster')
+
+    bindEvent(circlePlay, 'click', function(){
+        // 图标切换
+        circlePlay.src = 'res/icons/circle_active.png'
+        randomPlay.src = 'res/icons/random.png'
+        // ...
+    })
+    bindEvent(randomPlay, 'click', function(){
+        // 图标切换
+        circlePlay.src = 'res/icons/circle.png'
+        randomPlay.src = 'res/icons/random_active.png'
+        // ...
+    })
+
+    bindEvent(slowerPlay, 'click', function(){
+        musicPlayer.playbackRate -= 0.1
+    })
+    bindEvent(fasterPlay, 'click', function(){
+        musicPlayer.playbackRate += 0.1
+    })
+
+
+}
+
 var playList = function() {
     var selector = '.mp3-list'
-    var divName = getElement('#id-div-currentSong')
     var songImg = getElement(".skye-mp3-img")
     bindEventAll(selector, 'click', function(event){
         var self = event.target
@@ -237,7 +268,7 @@ var playList = function() {
         var name = self.querySelector('.mp3-list-name').innerHTML
         musicPlayer.src = path
         songImg.src = imgPath
-        divName.innerHTML = name
+        changeSongTitle(name)
         // musicPlayer.canplay = updateTime()
         musicPlayer.play()
         log('playing')
@@ -250,34 +281,48 @@ var playList = function() {
     })
 }
 
+// 替换歌名函数
+var changeSongTitle = function(name) {
+    var title = getElement('#id-div-currentSong')
+    title.innerHTML = name
+}
+
 // 列表循环时存在 bug
 // 改变资源的函数
 var changeRes = function(element, triggerEvent) {
-    // 得到列表中所有音乐的路径并存入数组
+    // 得到列表中所有音乐(包括音乐文件和图片)的路径并存入数组
     var list = document.querySelectorAll('.mp3-list')
-    var paths = []
-    var imgPaths = []
+    var paths = [],
+        imgPaths = [],
+        names = []
     for (var i = 0; i < list.length; i++) {
         var pathNum = list[i].dataset.path
         var path = `res/mp3/${pathNum}.mp3`
         var imgPath = `res/imgs/${pathNum}.jpg`
+        var name = list[i].querySelector('span').innerHTML
         paths.push(path)
         imgPaths.push(imgPath)
+        names.push(name)
     }
     //
     bindEvent(element, triggerEvent, function(){
-        // musicPlayer.pause()
         var songImg = getElement(".skye-mp3-img")
         var currSrc = musicPlayer.src
-        log('currSrc :', currSrc)
         var currNum = parseInt(currSrc.slice(currSrc.length - 5, currSrc.length - 4))
-        log('currNum :', currNum)
-        musicPlayer.src = paths[currNum % list.length]
-        log('nextSrc :', paths[currNum % list.length])
-        songImg.src = imgPaths[currNum % list.length]
-        log('nextImg :', imgPaths[currNum % list.length])
-        musicPlayer.canplay = updateTime()
-        musicPlayer.play()
+        if(element.id == 'id-button-pre') {
+            var nextNum = (currNum + 1) % list.length
+        } else if(element.id == 'id-button-next'){
+            var nextNum = currNum % list.length
+        }
+
+        changeSongTitle(names[nextNum])
+        songImg.src = imgPaths[nextNum]
+        setTimeout(function(){
+            musicPlayer.src = paths[nextNum]
+            updateTime()
+            musicPlayer.play()
+        }, 150)
+
     })
 }
 
@@ -287,7 +332,8 @@ var bindPreNext = function() {
     var nextBtn = getElement('#id-button-next')
     changeRes(nextBtn, 'click')
     changeRes(preBtn, 'click')
-    changeRes(musicPlayer, 'end')
+    // changeRes(musicPlayer, 'end')
+
     // var songImg = getElement(".skye-mp3-img")
     // var currSrc = musicPlayer.src
     // var currNum = parseInt(currSrc.slice(currSrc.length - 5, currSrc.length - 4))
@@ -326,5 +372,6 @@ var __skye = function() {
     playList()
     bindPreNext()
     bindProgress()
+    changePlayMode()
 }
 // __skye()
