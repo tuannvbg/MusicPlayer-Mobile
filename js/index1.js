@@ -12,27 +12,10 @@
       4(done)、添加动画
 */
 
-var isPlayed = false
 
-var playMusic = function() {
-    isPlayed = true
-    var musicPlayer = getElement('#id-audio-player')
-    musicPlayer.load()
-    setTimeout(function(){
-        musicPlayer.play()
-    } ,500)
-}
-
-var stopMusic = function() {
-    isPlayed = false
-    var musicPlayer = getElement('#id-audio-player')
-    setTimeout(function(){
-        musicPlayer.pause()
-    } ,500)
-}
 
 // 得到播放器元素
-// var musicPlayer = getElement('#id-audio-player')
+var musicPlayer = getElement('#id-audio-player')
 // 得到播放按钮
 var playButton = getElement('#id-button-play')
 
@@ -40,8 +23,8 @@ var playButton = getElement('#id-button-play')
 var playSwitch = function() {
     // 绑定播放按钮事件
     bindEvent(playButton, 'click', function(){
-        if(!isPlayed) {
-            playMusic()
+        if(musicPlayer.paused) {
+            musicPlayer.play()
             log('playing')
             // 切换暂停图标
             changeIcon(true, playButton)
@@ -50,8 +33,8 @@ var playSwitch = function() {
 
             updateTime()
 // (bug) 播放和暂停功能与列表播放的事件有冲突
-        } else {
-            stopMusic()
+        } else if(musicPlayer.played) {
+            musicPlayer.pause()
             log('paused')
             // 切换播放图标
             changeIcon(false, playButton)
@@ -115,7 +98,6 @@ var addTransition = function(flag, button) {
 
 // 进度条显示及事件绑定
 var bindProgress = function() {
-    var musicPlayer = getElement('#id-audio-player')
     var duration = parseInt(musicPlayer.duration)
     var range = getElement('#id-input-progress')
     bindEvent(range, 'mouseenter', function(){
@@ -190,7 +172,6 @@ var drawCircleProgress = function() {
 
 // 显示歌曲的 当前时间 和 总时间
 var showTime = function() {
-    var musicPlayer = getElement('#id-audio-player')
     var spanDura = getElement('#id-span-duration')
     var spanCurr = getElement('#id-span-currentTime')
     // 获取当前歌曲的总时间并将其写入 duration
@@ -204,7 +185,6 @@ var showTime = function() {
 }
 
 var updateTime = function() {
-    var musicPlayer = getElement('#id-audio-player')
     var spanCurr = getElement('#id-span-currentTime')
     var spanDura = getElement('#id-span-duration')
     var progress = getElement('#id-input-progress')
@@ -249,7 +229,6 @@ var rjust = function(s, width, fillchar=' ') {
 
 // 随机 循环 模式切换
 var changePlayMode = function() {
-    var musicPlayer = getElement('#id-audio-player')
     var circlePlay = getElement('#id-button-circlePlay')
     var randomPlay = getElement('#id-button-randomPlay')
     var slowerPlay = getElement('#id-button-slower')
@@ -279,7 +258,6 @@ var changePlayMode = function() {
 }
 
 var playList = function() {
-    var musicPlayer = getElement('#id-audio-player')
     var selector = '.mp3-list'
     var songImg = getElement(".skye-mp3-img")
     bindEventAll(selector, 'click', function(event){
@@ -288,11 +266,11 @@ var playList = function() {
         var path = `res/mp3/${pathNum}.mp3`
         var imgPath = `res/imgs/${pathNum}.jpg`
         var name = self.querySelector('.mp3-list-name').innerHTML
-        musicPlayer.firstElementChild.src = path
+        musicPlayer.src = path
         songImg.src = imgPath
         changeSongTitle(name)
         // musicPlayer.canplay = updateTime()
-        playMusic()
+        musicPlayer.play()
         log('playing')
         // 切换暂停图标
         changeIcon(true, playButton)
@@ -312,7 +290,6 @@ var changeSongTitle = function(name) {
 // 列表循环时存在 bug
 // 改变资源的函数
 var changeRes = function(element, triggerEvent) {
-    var musicPlayer = getElement('#id-audio-player')
     // 得到列表中所有音乐(包括音乐文件和图片)的路径并存入数组
     var list = document.querySelectorAll('.mp3-list')
     var paths = [],
@@ -330,7 +307,7 @@ var changeRes = function(element, triggerEvent) {
     //
     bindEvent(element, triggerEvent, function(){
         var songImg = getElement(".skye-mp3-img")
-        var currSrc = musicPlayer.firstElementChild.src
+        var currSrc = musicPlayer.src
         var currNum = parseInt(currSrc.slice(currSrc.length - 5, currSrc.length - 4))
         if(element.id == 'id-button-pre') {
             var nextNum = (currNum + 1) % list.length
@@ -341,10 +318,10 @@ var changeRes = function(element, triggerEvent) {
         changeSongTitle(names[nextNum])
         songImg.src = imgPaths[nextNum]
         setTimeout(function(){
-            musicPlayer.firstElementChild.src = paths[nextNum]
+            musicPlayer.src = paths[nextNum]
             updateTime()
-            playMusic()
-        }, 100)
+            musicPlayer.play()
+        }, 150)
 
     })
 }
