@@ -2,9 +2,11 @@
 A mobile style
 
 # UI
-![demo1](res/demo/demo1.png =300x200)![demo2](res/demo/demo2.png =300x200)![demo3](res/demo/demo3.png =300x200)![demo4](res/demo/demo4.png =300x200)
+<img src="res/demo/demo1.png" width="300" height="200" alt="demo1"/><img src="res/demo/demo2.png" width="300" height="200" alt="demo2"/><img src="res/demo/demo3.png" width="300" height="200" alt="demo3"/><img src="res/demo/demo4.png" width="300" height="200" alt="demo4"/>
+
 # 效果展示
-![demo](res/demo/demo.gif =760x700)
+<img src="res/demo/demo.gif" width="760" height="700" alt="demo"/>
+
 # 主要功能
  - 播放，暂停，切换音乐
  - 调节音乐进度
