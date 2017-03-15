@@ -357,21 +357,7 @@ var bindPreNext = function() {
     changeRes(preBtn, 'click')
     // changeRes(musicPlayer, 'end')
 
-    // var songImg = getElement(".skye-mp3-img")
-    // var currSrc = musicPlayer.src
-    // var currNum = parseInt(currSrc.slice(currSrc.length - 5, currSrc.length - 4))
-    // bindEvent(preBtn, 'click', function(){
-    //     currNum -= 1
-    //     musicPlayer.src = paths[currNum % list.length]
-    //     songImg.src = imgPaths[currNum % list.length]
-    //     musicPlayer.play()
-    // })
-    // bindEvent(nextBtn, 'click', function(){
-    //     currNum += 1
-    //     musicPlayer.src = paths[currNum % list.length]
-    //     songImg.src = imgPaths[currNum % list.length]
-    //     musicPlayer.play()
-    // })
+
 }
 
 
