@@ -15,6 +15,10 @@ from{-o-transform:rotate(0deg)}
 to{-o-transform:rotate(360deg)}
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
 
 .hide {
     display: none;
@@ -22,17 +26,26 @@ to{-o-transform:rotate(360deg)}
 
 body {
     font-family: 'Microsoft Yahei';
+    background-color: #FD4848;
+}
+h1 {
+    text-align: center;
+    font-family: fantasy;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-top: 20px;
 }
 
 /*背景**********************************************************/
-.skye-mp3-bg {
+/*.skye-mp3-bg {
     width: 80%;
     height: 800px;
     margin: 0 auto;
     border-radius: 20px;
     position: relative;
     background-color: #FD4848;
-}
+}*/
 
 /*整个播放器*****************************************************/
 .skye-mp3-player {
