@@ -7,6 +7,8 @@ A mobile style
 # 效果展示
 <img src="res/demo/demo.gif" width="760" height="700" alt="demo"/>
 
+想亲自体验？ [戳我](http://skyesun.cc/MusicPlayer/)
+
 # 主要功能
  - 播放，暂停，切换音乐
  - 调节音乐进度
